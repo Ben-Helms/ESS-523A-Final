@@ -1,0 +1,12 @@
+"0","gt(fuelLoad_sum) %>%"
+"0","  fmt_markdown(columns = Statistic) %>% "
+"0","  fmt_number("
+"0","    columns = everything(),"
+"0","    decimals = 2"
+"0","  ) %>%"
+"0","  tab_options("
+"0","    table.width = pct(100),"
+"0","    column_labels.font.weight = ""bold"") %>%"
+"0","  cols_align(align = ""center"", columns = everything())"
+"2","Error: object 'fuelLoad_sum' not found
+"
