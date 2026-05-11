@@ -14,7 +14,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE) 
 ```
 
 ```{r include=FALSE}
@@ -1134,7 +1134,7 @@ RF_Imp_75_var$Dataset <- factor(RF_Imp_75_var$Dataset, levels = c("Fine dead sur
 
 p1 <- ggplot(RF_Imp_75_var, aes(x = Importance, y = Predictor, fill = Dataset)) +
   geom_boxplot(width = 1, position = position_dodge2(preserve = "single")) +
-theme(panel.spacing.y = unit(2, "lines")) +
+  theme(panel.spacing.y = unit(2, "lines")) +
   ggtitle("Random Forest") +
   labs(x = "Variable Importance", y = NULL) + 
   scale_x_log10(labels = scales::label_number(),
@@ -1196,7 +1196,8 @@ dataset_cols <- setNames(
   levels(EN_Imp_75_var$Dataset))
 
 p2 <- ggplot(EN_Imp_75_var, aes(x = Coefficient, y = Predictor, fill = Dataset)) +
-  geom_boxplot(width = 0.4) +
+  geom_boxplot(width = 1, position = position_dodge2(preserve = "single")) +
+  theme(panel.spacing.y = unit(2, "lines")) +
   ggtitle("Elastic Net") +
   labs(x = "Coefficient Magnitude", y = NULL) + 
   scale_x_continuous(
@@ -1218,7 +1219,8 @@ p2 <- ggplot(EN_Imp_75_var, aes(x = Coefficient, y = Predictor, fill = Dataset))
         panel.border     = element_rect(color = "black", fill = NA, linewidth = 0.5),
         strip.background = element_rect(fill = "transparent", color = "black"),
         strip.text = element_text(hjust = 0.5, size = 12, face = "bold")
-  )
+  ) +
+  geom_vline(xintercept = 0, color = "red", linetype = "dashed", linewidth = .75) 
 
 # Leaps and Bounds coefficen magnitiude
 
@@ -1273,7 +1275,8 @@ dataset_cols <- setNames(
 
 
 p3 <- ggplot(LB_Imp_75_var, aes(x = coefficient, y = Predictor, fill = Dataset)) +
-  geom_boxplot(width = 0.4) +
+  geom_boxplot(width = 1, position = position_dodge2(preserve = "single")) +
+  theme(panel.spacing.y = unit(2, "lines")) +
   ggtitle("Leaps and Bounds") +
   labs(x = "Coefficient Magnitude", y = NULL) +
   scale_x_log10(labels = scales::label_number(),
